@@ -9,7 +9,11 @@ class Scraper
 
     b.goto "https://www.imdb.com/title/#{title}/quotes"
 
-    quotes = b.divs(class: 'sodatext').map do |d|
+    sleep(10)
+    b.button(class: 'ipc-see-more__button', text: 'All').click
+    sleep(10)
+
+    quotes = b.divs(class: 'ipc-html-content-inner-div').map do |d|
       d.text
     end
 
